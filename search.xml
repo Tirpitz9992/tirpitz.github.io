@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>number-theoretic function</title>
+    <url>/2020/05/17/number-theoretic-function/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>大概算是第一篇</title>
     <url>/2020/05/16/%E5%A4%A7%E6%A6%82%E7%AE%97%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
     <content><![CDATA[<p>其实大概也不知道放些什么东西，就随便当个仓库玩了（</p>
@@ -13,6 +18,9 @@
 </blockquote>
 <p>end.</p>
 ]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
       <tags>
         <tag>随笔</tag>
       </tags>
