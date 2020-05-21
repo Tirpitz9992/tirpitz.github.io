@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数据结构," />
 
 
 
@@ -86,12 +86,28 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tiz&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="碎碎念 Tree’rotation  code.1   Splaying  双旋 同构调整 异构调整 splaying - code   insert del 查询值的排名，排名的值，前驱，后继 区间操作   ##碎碎念 blog似乎一直空着也不好？ 随便放点奇奇怪怪的东西hhhh 之前笔记只有我自己才能看懂（x 要放出来还是修正一下比较好w 搞了好久md还是崩，算了算了，发了睡觉了（菜鸡发言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随便放篇splay">
+<meta property="og:url" content="http://yoursite.com/2020/05/21/%E9%9A%8F%E4%BE%BF%E6%94%BE%E7%AF%87%E4%B9%8B%E5%89%8D%E5%86%99%E7%9A%84splay/index.html">
 <meta property="og:site_name" content="tiz&#39;s blog">
+<meta property="og:description" content="碎碎念 Tree’rotation  code.1   Splaying  双旋 同构调整 异构调整 splaying - code   insert del 查询值的排名，排名的值，前驱，后继 区间操作   ##碎碎念 blog似乎一直空着也不好？ 随便放点奇奇怪怪的东西hhhh 之前笔记只有我自己才能看懂（x 要放出来还是修正一下比较好w 搞了好久md还是崩，算了算了，发了睡觉了（菜鸡发言">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/g5fi2fkv7gznd0zyhbwy6j29/image_1e8rk490afq61nfngfopd11gqj9.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/u5ztl8wvveep0p2nsk86wxp2/image_1e8rn0jb313om1pn11ogaohuq6km.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/etk4n6ctsr8kw8o8lij49e5q/image_1e8rnab4289v10pa1o9gj931t7t13.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/is6cxnk1sn259o96rjns8yl3/image_1e8rnip5l1dgqqoo1hj854k11hd20.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/toc124331ki92quirrqq4r80/image_1e8rnma5q1tqc109o6gpc2bib72t.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/lfykx2w1xqgfhqghm76r5ax9/image_1e8rnu3bd1qpi6s4ardvj71j513a.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/vrycsrdayvx1ps8hiwdgnroo/image_1e8ro1kl11mabe1r11p2r0k3e53n.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/56pdisk1xojcuwrevgze33v8/image_1e8ro3gml7fk8stgtkm94e0o44.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/qfm3bo2n5b3gfhj3096jykt0/image_1e8ro4mvn81a13021fdka291fvt4h.png">
+<meta property="og:image" content="http://static.zybuluo.com/tirpitz/vlg4o7bb6oxdjp3lv93ju4ef/image_1e8ro629h12lg12h9nmn4185g5e.png">
+<meta property="article:published_time" content="2020-05-21T15:08:36.000Z">
+<meta property="article:modified_time" content="2020-05-21T15:57:54.300Z">
 <meta property="article:author" content="tirpitz">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://static.zybuluo.com/tirpitz/g5fi2fkv7gznd0zyhbwy6j29/image_1e8rk490afq61nfngfopd11gqj9.png">
 
 
 
@@ -121,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/21/随便放篇之前写的splay/"/>
 
 
 
 
 
-  <title>tiz's blog</title>
+  <title>随便放篇splay | tiz's blog</title>
   
 
 
@@ -146,8 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,9 +299,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -316,9 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/21/%E9%9A%8F%E4%BE%BF%E6%94%BE%E7%AF%87%E4%B9%8B%E5%89%8D%E5%86%99%E7%9A%84splay/" itemprop="url">随便放篇splay</a></h1>
+          <h1 class="post-title" itemprop="name headline">随便放篇splay</h1>
         
 
         <div class="post-meta">
@@ -368,9 +381,7 @@
       
 
       
-        
-          
-            <!-- TOC -->
+        <!-- TOC -->
 <ul>
 <li><a href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5">碎碎念</a></li>
 <li><a href="#treerotation">Tree’rotation</a>
@@ -459,8 +470,6 @@
 <p>需要注意的是，在具体问题中，我们需要插入一个INF和一个-INF去避免$L - 1$为零的问题</p>
 </blockquote>
 
-          
-        
       
     </div>
     
@@ -475,165 +484,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/%E5%A4%A7%E6%A6%82%E7%AE%97%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tirpitz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/Tiz.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tiz's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/16/%E5%A4%A7%E6%A6%82%E7%AE%97%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87/" itemprop="url">大概算是第一篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T23:48:11+08:00">
-                2020-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/test/" itemprop="url" rel="index">
-                    <span itemprop="name">test</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>其实大概也不知道放些什么东西，就随便当个仓库玩了（</p>
-<p>或许会放些学习笔记，以及偶尔的碎碎念（？</p>
-<p>或许还会放些随便写的无聊的东西</p>
-<p>大概就是这样</p>
-<p>顺带放一下我的联系方式，当然大概可以看到这个网站的人都知道hhhhh</p>
-<blockquote>
-<p>QQ: 3467262357<br>
-telegram: @tirpitz52727</p>
-</blockquote>
-<p>end.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/16/%E5%A4%A7%E6%A6%82%E7%AE%97%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87/" rel="next" title="大概算是第一篇">
+                <i class="fa fa-chevron-left"></i> 大概算是第一篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -643,10 +523,11 @@ telegram: @tirpitz52727</p>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -654,6 +535,10 @@ telegram: @tirpitz52727</p>
 
 
           
+
+  
+
+
 
         </div>
         
@@ -903,6 +788,10 @@ telegram: @tirpitz52727</p>
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
