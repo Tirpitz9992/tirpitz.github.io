@@ -154,7 +154,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.5k 字
+                    1.4k 字
                   </span>
                 
 
@@ -164,7 +164,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    24
+                    22
                      分钟
                   </span>
                 
@@ -220,10 +220,9 @@
 <p>随便放点奇奇怪怪的东西hhhh</p>
 <p>之前笔记只有我自己才能看懂（x</p>
 <p>要放出来还是修正一下比较好w</p>
-<p>搞了好久md还是崩，算了算了，发了睡觉了（菜鸡发言</p>
 <h2 id="Tree’rotation"><a class="header-anchor" href="#Tree’rotation">¶</a>Tree’rotation</h2>
-<p><img src="http://static.zybuluo.com/tirpitz/g5fi2fkv7gznd0zyhbwy6j29/image_1e8rk490afq61nfngfopd11gqj9.png" srcset="/img/loading.gif" alt="image_1e8rk490afq61nfngfopd11gqj9.png-6.6kB"></p>
-<p>分为left rotation和right rotation</p>
+<p><img src="/assets/Screenshot_20200527_192201.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192201"><br>
+分为left rotation和right rotation</p>
 <p>right rotation如上图所示</p>
 <p>如果我们此时是这样的需求：</p>
 <p>将x从y的left child转化为parent</p>
@@ -233,108 +232,108 @@
 <p>x原来的left subtree，y原来的right subtree还保持不变</p>
 <p>此时显然x原来的right subtree就只能放在y的left subtree</p>
 <p>然后left rotation反之</p>
-<pre><code class="hljs plain">void rratation(int &amp;now)
-&#123;
-    int l &#x3D; tree[now].l;
-    &#x2F;&#x2F;left subtree(x)
-    tree[now].l &#x3D; tree[l].r;
-    &#x2F;&#x2F;let x&#39;left subtree become y&#39;right subtree 
-    tree[l].r &#x3D; now;
-    now &#x3D; l;
-    &#x2F;&#x2F;let x become y&#39;parent
-    &#x2F;&#x2F;upd
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rratation</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;now)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l = tree[now].l;
+    <span class="hljs-comment">//left subtree(x)</span>
+    tree[now].l = tree[l].r;
+    <span class="hljs-comment">//let x'left subtree become y'right subtree </span>
+    tree[l].r = now;
+    now = l;
+    <span class="hljs-comment">//let x become y'parent</span>
+    <span class="hljs-comment">//upd</span>
 &#125;
-void lroration(int &amp;now)
-&#123;
-    int r &#x3D; tree[now].r;
-    tree[now].r &#x3D; tree[r].l;
-    tree[r].l &#x3D; now;
-    now &#x3D; r;
-    &#x2F;&#x2F;upd
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lroration</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;now)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> r = tree[now].r;
+    tree[now].r = tree[r].l;
+    tree[r].l = now;
+    now = r;
+    <span class="hljs-comment">//upd</span>
 &#125;</code></pre>
 <h3 id="code-1"><a class="header-anchor" href="#code-1">¶</a>code.1</h3>
-<pre><code class="hljs plain">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int maxn &#x3D; 1e5;
-typedef long long ll;
-struct Node
-&#123;
-    int l , r;
-    int val , size;
-    int cnt; &#x2F;&#x2F;current node repeat times
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">1e5</span>;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> l , r;
+    <span class="hljs-keyword">int</span> val , <span class="hljs-built_in">size</span>;
+    <span class="hljs-keyword">int</span> cnt; <span class="hljs-comment">//current node repeat times</span>
 &#125;spl[maxn];
-int cnt &#x3D; 0 , root;
-void newnode(int &amp;now , int &amp;val)
-&#123;
-    spl[now &#x3D; ++cnt].val;
-    spl[cnt].size++;
+<span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span> , root;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">newnode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;now , <span class="hljs-keyword">int</span> &amp;val)</span></span>
+<span class="hljs-function"></span>&#123;
+    spl[now = ++cnt].val;
+    spl[cnt].<span class="hljs-built_in">size</span>++;
     spl[cnt].cnt ++;
 &#125;
-void update(int now)
-&#123;
-    spl[now].size &#x3D; spl[spl[now].l].size + spl[spl[now].r].size 
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> now)</span></span>
+<span class="hljs-function"></span>&#123;
+    spl[now].<span class="hljs-built_in">size</span> = spl[spl[now].l].<span class="hljs-built_in">size</span> + spl[spl[now].r].<span class="hljs-built_in">size</span> 
     + spl[now].cnt;
-    &#x2F;&#x2F;upd size -&gt; the size of left subtree + the size of right subtree  
-    &#x2F;&#x2F;and + now cnt
+    <span class="hljs-comment">//upd size -&gt; the size of left subtree + the size of right subtree  </span>
+    <span class="hljs-comment">//and + now cnt</span>
 &#125;
-void rroration(int &amp;now)
-&#123;
-    int l &#x3D; spl[now].l;
-    spl[now].l &#x3D; spl[l].r;
-    spl[l].r &#x3D; now;
-    now &#x3D; l;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rroration</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;now)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l = spl[now].l;
+    spl[now].l = spl[l].r;
+    spl[l].r = now;
+    now = l;
     update(spl[now].r) , update(now);
 &#125;
-void lroration(int &amp;now)
-&#123;
-    int r &#x3D; spl[now].r;
-    spl[now].r&#x3D; spl[r].l;
-    spl[r].l &#x3D; now;
-    now &#x3D; r;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lroration</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;now)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> r = spl[now].r;
+    spl[now].r= spl[r].l;
+    spl[r].l = now;
+    now = r;
     update(spl[now].l) , update(now);
 &#125;</code></pre>
 <h2 id="Splaying"><a class="header-anchor" href="#Splaying">¶</a>Splaying</h2>
-<p><img src="http://static.zybuluo.com/tirpitz/u5ztl8wvveep0p2nsk86wxp2/image_1e8rn0jb313om1pn11ogaohuq6km.png" srcset="/img/loading.gif" alt="image_1e8rn0jb313om1pn11ogaohuq6km.png"><br>
+<p><img src="/assets/Screenshot_20200527_192428.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192428"><br>
 如果存在一条这样的链</p>
 <p>如何把-&gt;root node</p>
 <p>简单过程就是通过不断的right roration移动变成root node</p>
 <h3 id="双旋"><a class="header-anchor" href="#双旋">¶</a>双旋</h3>
 <h3 id="同构调整"><a class="header-anchor" href="#同构调整">¶</a>同构调整</h3>
-<p><img src="http://static.zybuluo.com/tirpitz/etk4n6ctsr8kw8o8lij49e5q/image_1e8rnab4289v10pa1o9gj931t7t13.png" srcset="/img/loading.gif" alt="image_1e8rnab4289v10pa1o9gj931t7t13.png-16.2kB"><br>
+<p><img src="/assets/Screenshot_20200527_192528_usttzrtjb.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192528"><br>
 转化结果<br>
-<img src="http://static.zybuluo.com/tirpitz/is6cxnk1sn259o96rjns8yl3/image_1e8rnip5l1dgqqoo1hj854k11hd20.png" srcset="/img/loading.gif" alt="image_1e8rnip5l1dgqqoo1hj854k11hd20.png-16.3kB"><br>
+<img src="/assets/Screenshot_20200527_192640.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192640"><br>
 同理，如果是right subtree单链也是这样</p>
 <h3 id="异构调整"><a class="header-anchor" href="#异构调整">¶</a>异构调整</h3>
-<p><img src="http://static.zybuluo.com/tirpitz/toc124331ki92quirrqq4r80/image_1e8rnma5q1tqc109o6gpc2bib72t.png" srcset="/img/loading.gif" alt="image_1e8rnma5q1tqc109o6gpc2bib72t.png-20.8kB"><br>
+<p><img src="/assets/Screenshot_20200527_192739.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192739"><br>
 显然需要先对P left roration后对G进行right roration</p>
 <p>另外的对称情况也是这样</p>
 <p>接下来是一个实例<br>
-<img src="http://static.zybuluo.com/tirpitz/lfykx2w1xqgfhqghm76r5ax9/image_1e8rnu3bd1qpi6s4ardvj71j513a.png" srcset="/img/loading.gif" alt="image_1e8rnu3bd1qpi6s4ardvj71j513a.png-112.6kB"><br>
-<img src="http://static.zybuluo.com/tirpitz/vrycsrdayvx1ps8hiwdgnroo/image_1e8ro1kl11mabe1r11p2r0k3e53n.png" srcset="/img/loading.gif" alt="image_1e8ro1kl11mabe1r11p2r0k3e53n.png-87.4kB"><br>
-<img src="http://static.zybuluo.com/tirpitz/56pdisk1xojcuwrevgze33v8/image_1e8ro3gml7fk8stgtkm94e0o44.png" srcset="/img/loading.gif" alt="image_1e8ro3gml7fk8stgtkm94e0o44.png-120.9kB"><br>
-<img src="http://static.zybuluo.com/tirpitz/qfm3bo2n5b3gfhj3096jykt0/image_1e8ro4mvn81a13021fdka291fvt4h.png" srcset="/img/loading.gif" alt="image_1e8ro4mvn81a13021fdka291fvt4h.png-89.5kB"><br>
-<img src="http://static.zybuluo.com/tirpitz/vlg4o7bb6oxdjp3lv93ju4ef/image_1e8ro629h12lg12h9nmn4185g5e.png" srcset="/img/loading.gif" alt="image_1e8ro629h12lg12h9nmn4185g5e.png-56.8kB"></p>
+<img src="/assets/Screenshot_20200527_192909.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192909"><br>
+<a href="/assets/Screenshot_20200527_192956.png">Screenshot_20200527_192956</a><br>
+<img src="/assets/Screenshot_20200527_193046.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193046"><br>
+<img src="/assets/Screenshot_20200527_193131.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193131"><br>
+<img src="/assets/Screenshot_20200527_193211.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193211"></p>
 <h3 id="splaying-code"><a class="header-anchor" href="#splaying-code">¶</a>splaying - code</h3>
 <p>单独考虑当前步骤的状态，判断当前节点为单旋还是双旋</p>
-<pre><code class="hljs plain">void splaying(int x , int &amp;y)&#x2F;&#x2F;start x , and end y
-&#123;
-    if(x &#x3D;&#x3D; y) return ;
-    int &amp;l &#x3D; spl[y].l , &amp;r &#x3D; spl[y].r;
-    if(x &#x3D;&#x3D; l) rroration(y);
-    else if(x &#x3D;&#x3D; r) lroration(y);
-    else 
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">splaying</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> &amp;y)</span><span class="hljs-comment">//start x , and end y</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(x == y) <span class="hljs-keyword">return</span> ;
+    <span class="hljs-keyword">int</span> &amp;l = spl[y].l , &amp;r = spl[y].r;
+    <span class="hljs-keyword">if</span>(x == l) rroration(y);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x == r) lroration(y);
+    <span class="hljs-keyword">else</span> 
     &#123;
-        if(spl[x].val &lt; spl[y].val)
+        <span class="hljs-keyword">if</span>(spl[x].val &lt; spl[y].val)
         &#123;
-            if(spl[x].val &lt; spl[l].val)
+            <span class="hljs-keyword">if</span>(spl[x].val &lt; spl[l].val)
                 splaying(x , spl[l].l) , rroration(y) , rroration(y);
-            else splaying(x , spl[l].r) , lroration(l) , rroration(y);
+            <span class="hljs-keyword">else</span> splaying(x , spl[l].r) , lroration(l) , rroration(y);
         &#125;
-        else 
+        <span class="hljs-keyword">else</span> 
         &#123;
-            if(spl[x].val &gt; spl[r].val)
+            <span class="hljs-keyword">if</span>(spl[x].val &gt; spl[r].val)
                 splaying(x , spl[r].r) , lroration(y) , lroration(y);
-            else splaying(x , spl[r].l) , rroration(r) , lroration(y);
+            <span class="hljs-keyword">else</span> splaying(x , spl[r].l) , rroration(r) , lroration(y);
         &#125;
     &#125;
 &#125;</code></pre>
@@ -342,127 +341,126 @@ void lroration(int &amp;now)
 <p>这是一种简单的写法</p>
 <h2 id="insert"><a class="header-anchor" href="#insert">¶</a>insert</h2>
 <p>插入后，把插入的节点splaying到root node</p>
-<pre><code class="hljs plain">void insert(int &amp;now , int &amp;val)
-&#123;
-    if(!now) newnode(now , val) , splaying(now , root);
-    else if(val &lt; spl[now].val) insert(spl[now].l , val);
-    else if(val &gt; spl[now].val) insert(spl[now].r , val);
-    else spl[now].size++ , spl[now].cnt++ , splaying(now , root);
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;now , <span class="hljs-keyword">int</span> &amp;val)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(!now) newnode(now , val) , splaying(now , root);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(val &lt; spl[now].val) insert(spl[now].l , val);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(val &gt; spl[now].val) insert(spl[now].r , val);
+    <span class="hljs-keyword">else</span> spl[now].<span class="hljs-built_in">size</span>++ , spl[now].cnt++ , splaying(now , root);
 &#125;</code></pre>
 <h2 id="del"><a class="header-anchor" href="#del">¶</a>del</h2>
 <p>先递归找到需要删除的node ， 然后将node splay到root</p>
 <p>如果root.cnt&gt;1，就cnt–</p>
 <p>否则，如果root node没有后继(即没有right subtree)，那么就直接让node root变成node root的left child即可(即del此时的root node)</p>
 <p>否则，我们寻找root node的后继，然后将其伸展到root node的right child，然后再让root node的left subtree变成root node的right subtree的left subtree即可</p>
-<pre><code class="hljs plain">void delnode(int now)
-&#123;
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">delnode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> now)</span></span>
+<span class="hljs-function"></span>&#123;
     splaying(now , root);
-    if(spl[now].cnt &gt; 0) spl[now].size-- , spl[now].cnt--;
-    else if(spl[root].r)
+    <span class="hljs-keyword">if</span>(spl[now].cnt &gt; <span class="hljs-number">0</span>) spl[now].<span class="hljs-built_in">size</span>-- , spl[now].cnt--;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(spl[root].r)
     &#123;
-        int p &#x3D; spl[root].r;
-        while(spl[p].l) p &#x3D; spl[p].l;
+        <span class="hljs-keyword">int</span> p = spl[root].r;
+        <span class="hljs-keyword">while</span>(spl[p].l) p = spl[p].l;
         splaying(p , spl[root].r);
-        spl[spl[root].r].l &#x3D; spl[root].l;
-        root &#x3D; spl[root].r;
+        spl[spl[root].r].l = spl[root].l;
+        root = spl[root].r;
         update(root);
     &#125;
-    else root &#x3D; spl[root].l;
+    <span class="hljs-keyword">else</span> root = spl[root].l;
 &#125;
 
-&#x2F;&#x2F;
+<span class="hljs-comment">//</span>
 
-void del(int now , int &amp;val)
-&#123;
-    if(spl[now].val &#x3D;&#x3D; val) delnode(now);
-    else if(val &lt; spl[now].val) del(spl[now].l , val);
-    else del(spl[now].r , val);
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">del</span><span class="hljs-params">(<span class="hljs-keyword">int</span> now , <span class="hljs-keyword">int</span> &amp;val)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(spl[now].val == val) delnode(now);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(val &lt; spl[now].val) del(spl[now].l , val);
+    <span class="hljs-keyword">else</span> del(spl[now].r , val);
 &#125;</code></pre>
 <h2 id="查询值的排名，排名的值，前驱，后继"><a class="header-anchor" href="#查询值的排名，排名的值，前驱，后继">¶</a>查询值的排名，排名的值，前驱，后继</h2>
 <p>写法很常规<br>
 需要注意的是，在找到结点后要对其伸展，还有注意节点的cnt</p>
-<pre><code class="hljs plain">int getrank(int val)
-&#123;int getrank(int val)
-&#123;
-    int now &#x3D; root, rank &#x3D; 1;
-    while(now)
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getrank</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> now = root, rank = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(now)
     &#123;
-        if(spl[now].val&#x3D;&#x3D;val)   &#x2F;&#x2F;找到了要的结点，这个之前的没有
+        <span class="hljs-keyword">if</span>(spl[now].val==val)   <span class="hljs-comment">//找到了要的结点，这个之前的没有</span>
         &#123;
-            rank+&#x3D;spl[spl[now].l].size;
+            rank+=spl[spl[now].l].<span class="hljs-built_in">size</span>;
             splaying(now,root);
-            break;
+            <span class="hljs-keyword">break</span>;
         &#125;
-        if(val&lt;&#x3D;spl[now].val)
-            now&#x3D;spl[now].l;
-        else 
+        <span class="hljs-keyword">if</span>(val&lt;=spl[now].val)
+            now=spl[now].l;
+        <span class="hljs-keyword">else</span> 
         &#123;
-            rank+&#x3D;spl[spl[now].l].size+spl[now].cnt;
-            now&#x3D;spl[now].r;
+            rank+=spl[spl[now].l].<span class="hljs-built_in">size</span>+spl[now].cnt;
+            now=spl[now].r;
         &#125;
     &#125;
-    return rank;
+    <span class="hljs-keyword">return</span> rank;
 &#125;
-int getnum(int rank)
-&#123;
-    int now &#x3D; root;
-    while(now)
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getnum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rank)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> now = root;
+    <span class="hljs-keyword">while</span>(now)
     &#123;
-        int lsize &#x3D; spl[spl[now].l].size;
-        if(lsize+1&lt;&#x3D;rank&amp;&amp;rank&lt;&#x3D;lsize+spl[now].cnt) &#x2F;&#x2F;如果在这个范围内，那就是当前结点
+        <span class="hljs-keyword">int</span> lsize = spl[spl[now].l].<span class="hljs-built_in">size</span>;
+        <span class="hljs-keyword">if</span>(lsize+<span class="hljs-number">1</span>&lt;=rank&amp;&amp;rank&lt;=lsize+spl[now].cnt) <span class="hljs-comment">//如果在这个范围内，那就是当前结点</span>
         &#123;
             splaying(now,root);
-            break;
+            <span class="hljs-keyword">break</span>;
         &#125;
-        else if(lsize&gt;&#x3D;rank)
-            now&#x3D;spl[now].l;
-        else 
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(lsize&gt;=rank)
+            now=spl[now].l;
+        <span class="hljs-keyword">else</span> 
         &#123;
-            rank-&#x3D;lsize+spl[now].cnt;
-            now&#x3D;spl[now].r;
+            rank-=lsize+spl[now].cnt;
+            now=spl[now].r;
         &#125;
     &#125;
-    return spl[now].val;
+    <span class="hljs-keyword">return</span> spl[now].val;
 &#125;
-    int now &#x3D; root, rank &#x3D; 1;
-    while(now)
+    <span class="hljs-keyword">int</span> now = root, rank = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(now)
     &#123;
-        if(spl[now].val&#x3D;&#x3D;val)  
+        <span class="hljs-keyword">if</span>(spl[now].val==val)  
         &#123;
-            rank+&#x3D;spl[spl[now].l].size;
+            rank+=spl[spl[now].l].<span class="hljs-built_in">size</span>;
             splaying(now,root);
-            break;
+            <span class="hljs-keyword">break</span>;
         &#125;
-        if(val&lt;&#x3D;spl[now].val)
-            now&#x3D;spl[now].l;
-        else 
+        <span class="hljs-keyword">if</span>(val&lt;=spl[now].val)
+            now=spl[now].l;
+        <span class="hljs-keyword">else</span> 
         &#123;
-            rank+&#x3D;spl[spl[now].l].size+spl[now].cnt;
-            now&#x3D;spl[now].r;
+            rank+=spl[spl[now].l].<span class="hljs-built_in">size</span>+spl[now].cnt;
+            now=spl[now].r;
         &#125;
     &#125;
-    return rank;
+    <span class="hljs-keyword">return</span> rank;
 &#125;
-int getnum(int rank)
-&#123;
-    int now &#x3D; root;
-    while(now)
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getnum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rank)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> now = root;
+    <span class="hljs-keyword">while</span>(now)
     &#123;
-        int lsize &#x3D; spl[spl[now].l].size;
-        if(lsize+1&lt;&#x3D;rank&amp;&amp;rank&lt;&#x3D;lsize+spl[now].cnt) 
+        <span class="hljs-keyword">int</span> lsize = spl[spl[now].l].<span class="hljs-built_in">size</span>;
+        <span class="hljs-keyword">if</span>(lsize+<span class="hljs-number">1</span>&lt;=rank&amp;&amp;rank&lt;=lsize+spl[now].cnt) 
         &#123;
             splaying(now,root);
-            break;
+            <span class="hljs-keyword">break</span>;
         &#125;
-        else if(lsize&gt;&#x3D;rank)
-            now&#x3D;spl[now].l;
-        else 
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(lsize&gt;=rank)
+            now=spl[now].l;
+        <span class="hljs-keyword">else</span> 
         &#123;
-            rank-&#x3D;lsize+spl[now].cnt;
-            now&#x3D;spl[now].r;
+            rank-=lsize+spl[now].cnt;
+            now=spl[now].r;
         &#125;
     &#125;
-    return spl[now].val;
+    <span class="hljs-keyword">return</span> spl[now].val;
 &#125;</code></pre>
 <h2 id="区间操作"><a class="header-anchor" href="#区间操作">¶</a>区间操作</h2>
 <p>如果要对$[L , R]$区间操作</p>
@@ -475,6 +473,13 @@ int getnum(int rank)
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -490,6 +495,12 @@ int getnum(int rank)
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/05/28/%E7%BE%A4%E8%AE%BA%E5%85%A5%E9%97%A8-Polya/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[群论入门]Polya</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">
