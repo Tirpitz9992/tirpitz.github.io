@@ -1,24 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>大概算是第一篇</title>
-    <url>/2020/05/16/%E5%A4%A7%E6%A6%82%E7%AE%97%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
-    <content><![CDATA[<p>其实大概也不知道放些什么东西，就随便当个仓库玩了（</p>
-<p>或许会放些学习笔记，以及偶尔的碎碎念（？</p>
-<p>或许还会放些随便写的无聊的东西</p>
-<p>大概就是这样</p>
-<p>顺带放一下我的联系方式，当然大概可以看到这个网站的人都知道hhhhh</p>
+    <title>cf 641</title>
+    <url>/2020/05/29/cf-641/</url>
+    <content><![CDATA[<!-- TOC -->
+<ul>
+<li><a href="#2a">2A</a>
+<ul>
+<li><a href="#%E9%A2%98%E6%84%8F">题意</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3">题解</a></li>
+<li><a href="#code">code</a></li>
+</ul>
+</li>
+<li><a href="#2b">2B</a>
+<ul>
+<li><a href="#%E9%A2%98%E6%84%8F-1">题意</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3-1">题解</a></li>
+<li><a href="#code-1">code</a></li>
+</ul>
+</li>
+<li><a href="#2c--1a">2C | 1A</a>
+<ul>
+<li><a href="#%E9%A2%98%E6%84%8F-2">题意</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3-2">题解</a></li>
+<li><a href="#code-2">code</a></li>
+</ul>
+</li>
+<li><a href="#2d--1b">2D | 1B</a>
+<ul>
+<li><a href="#%E9%A2%98%E6%84%8F-3">题意</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3-3">题解</a></li>
+<li><a href="#code-3">code</a></li>
+</ul>
+</li>
+<li><a href="#2e--1c">2E | 1C</a>
+<ul>
+<li><a href="#%E9%A2%98%E6%84%8F-4">题意</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3-4">题解</a></li>
+<li><a href="#code-4">code</a></li>
+</ul>
+</li>
+<li><a href="#2f--1d">2F | 1D</a>
+<ul>
+<li><a href="#%E9%A2%98%E6%84%8F-5">题意</a></li>
+<li><a href="#%E9%A2%98%E8%A7%A3-5">题解</a></li>
+<li><a href="#code-5">code</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="2A"><a class="header-anchor" href="#2A">¶</a>2A</h2>
+<p><img src="/img/Screenshot_20200528_230932.png" srcset="/img/loading.gif" alt="Screenshot_20200528_230932"></p>
+<h3 id="题意"><a class="header-anchor" href="#题意">¶</a>题意</h3>
+<p>给定一函数$f(x)$定义为$x$的最小质因数<br>
+然后给定两个数$n,k$求$f(f(…f(n)…))$ [k次</p>
+<h3 id="题解"><a class="header-anchor" href="#题解">¶</a>题解</h3>
+<p>对于题意，我们显然有，如果n是偶数，$ans = n + k \times 2$</p>
+<p>如果n是奇数，$f(n) + n$一定为偶数</p>
+<p>那么结果显然</p>
+<h3 id="code"><a class="header-anchor" href="#code">¶</a>code</h3>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> t;<span class="hljs-built_in">cin</span>&gt;&gt;t;
+    <span class="hljs-keyword">while</span>(t--)
+    &#123;
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> n , k , i;
+        <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k;
+        <span class="hljs-keyword">if</span>(n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-built_in">cout</span>&lt;&lt;n+<span class="hljs-number">2</span>*k&lt;&lt;<span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">else</span> 
+        &#123;
+            <span class="hljs-keyword">for</span>(i = <span class="hljs-number">3</span> ; i &lt;= n ; i++)
+            &#123;
+                <span class="hljs-keyword">if</span>(n % i == <span class="hljs-number">0</span>)
+                &#123;
+                    n += i;
+                    <span class="hljs-built_in">cout</span>&lt;&lt;(n + (k - <span class="hljs-number">1</span>)*<span class="hljs-number">2</span>) &lt;&lt;<span class="hljs-built_in">endl</span>;
+                    <span class="hljs-keyword">break</span>;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+<h2 id="2B"><a class="header-anchor" href="#2B">¶</a>2B</h2>
+<p><img src="/img/Screenshot_20200528_233557.png" srcset="/img/loading.gif" alt="Screenshot_20200528_233557"></p>
+<h3 id="题意-v2"><a class="header-anchor" href="#题意-v2">¶</a>题意</h3>
+<p>给定一个序列，求符合条件$S_i$ mod $i - 1 = 0$的最大上升子序列</p>
+<h3 id="题解-v2"><a class="header-anchor" href="#题解-v2">¶</a>题解</h3>
+<p>根据题意直接写</p>
+<h3 id="code-v2"><a class="header-anchor" href="#code-v2">¶</a>code</h3>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;
+<span class="hljs-keyword">int</span> n , t , a[maxn]  , f[maxn];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">cin</span>&gt;&gt;t;
+    <span class="hljs-keyword">while</span>(t--)
+    &#123;
+        <span class="hljs-built_in">cin</span>&gt;&gt;n;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++) <span class="hljs-built_in">cin</span>&gt;&gt;a[i];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++) f[i] = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++)
+        &#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i&lt;&lt;<span class="hljs-number">1</span> ; j &lt;= n ; j += i)
+            &#123;
+                <span class="hljs-keyword">if</span>(a[j] &gt; a[i])
+                    f[j] = <span class="hljs-built_in">max</span>(f[j] , f[i] + <span class="hljs-number">1</span>);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++)
+            ans = <span class="hljs-built_in">max</span>(ans , f[i]);
+        <span class="hljs-built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="hljs-built_in">endl</span>;
+    &#125;
+&#125;</code></pre>
+<h2 id="2C-1A"><a class="header-anchor" href="#2C-1A">¶</a>2C | 1A</h2>
+<p><img src="/img/Screenshot_20200529_000706.png" srcset="/img/loading.gif" alt="Screenshot_20200529_000706"></p>
+<h3 id="题意-v3"><a class="header-anchor" href="#题意-v3">¶</a>题意</h3>
+<p>对于给定的序列，求如图所示结果</p>
+<h3 id="题解-v3"><a class="header-anchor" href="#题解-v3">¶</a>题解</h3>
+<p>对于$a_1$ , $gcd_{a_1} = gcd(lcm(a_1 , a_2) , lcm(a_1 , a_3) , … , lcm(a_1 , a_n))$<br>
+显然，$lcm(a_1 , a_2) , lcm(a_1 , a_3) , … , lcm(a_1 , a_n)$中必定有因数$a_1$<br>
+那么就可以化简$gcd_{a_1} = gcd(a_1 , lcm(a_1 , a_2 , … , a_n))$<br>
+然后答案就显然了</p>
+<h3 id="code-v3"><a class="header-anchor" href="#code-v3">¶</a>code</h3>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">3e5</span> + <span class="hljs-number">50</span>;
+<span class="hljs-function">ll <span class="hljs-title">gcd</span><span class="hljs-params">(ll a , ll b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> b == <span class="hljs-number">0</span> ? a : gcd(b , a % b);
+&#125;
+<span class="hljs-function">ll <span class="hljs-title">lcm</span><span class="hljs-params">(ll a , ll b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> a * b / gcd(a , b);
+&#125;
+ll a[maxn] , n , suf[maxn] , ans = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">cin</span>&gt;&gt;n;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++) <span class="hljs-built_in">cin</span>&gt;&gt;a[i];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n ; i &gt;= <span class="hljs-number">1</span> ; i--) suf[i] = gcd(suf[i+<span class="hljs-number">1</span>] , a[i]);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++) 
+        ans = gcd(ans , lcm(a[i] , suf[i + <span class="hljs-number">1</span>]));
+    <span class="hljs-built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="hljs-built_in">endl</span>;
+&#125;</code></pre>
+<h2 id="2D-1B"><a class="header-anchor" href="#2D-1B">¶</a>2D | 1B</h2>
+<p><img src="/img/Screenshot_20200529_002132-1.png" srcset="/img/loading.gif" alt="Screenshot_20200529_002132-1"></p>
+<h3 id="题意-v4"><a class="header-anchor" href="#题意-v4">¶</a>题意</h3>
+<p>给定一个序列，封装一种可以将一个区间变成其中位数「此时我们定义的中位数为第$\left \lfloor \frac{|s| + 1}{2}  \right \rfloor$小的数」的多元运算</p>
+<p>让这个序列变成特定的值</p>
+<p>其实我第一反映就是可持久化Fhq treap（其实因为我zz，没有算复杂度），然后糊了会板子板子都写不对，后来才想到比较简单的做法</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">1e5</span>+<span class="hljs-number">5</span>;
+<span class="hljs-keyword">int</span> a[maxn],b[maxn];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> t;<span class="hljs-built_in">cin</span>&gt;&gt;t;
+    <span class="hljs-keyword">while</span>(t--)
+    &#123;
+        <span class="hljs-keyword">int</span> n , k; 
+        <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k;
+        <span class="hljs-keyword">bool</span> flag=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) 
+        &#123;
+            <span class="hljs-built_in">cin</span>&gt;&gt;a[i];
+            <span class="hljs-keyword">if</span>(a[i]&lt;k) b[i]=<span class="hljs-number">-1</span>;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a[i]==k) b[i]=<span class="hljs-number">0</span>,flag=<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">else</span> b[i]=<span class="hljs-number">1</span>;
+        &#125;
+        <span class="hljs-keyword">if</span>(flag)
+        &#123;
+            <span class="hljs-keyword">if</span>(n==<span class="hljs-number">1</span>)
+            &#123;
+                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"yes"</span>);
+                <span class="hljs-keyword">continue</span>;
+            &#125;
+            flag=<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; ++i)
+            &#123;
+                <span class="hljs-keyword">if</span>(b[i]&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&lt;=i+<span class="hljs-number">2</span>;++j)
+                &#123;
+                    <span class="hljs-keyword">if</span>(j &gt; n) <span class="hljs-keyword">continue</span>;
+                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i == j) <span class="hljs-keyword">continue</span>;
+                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(b[j]&gt;=<span class="hljs-number">0</span>) flag=<span class="hljs-number">1</span>;
+                &#125;
+            &#125;
+            <span class="hljs-built_in">puts</span>(flag?<span class="hljs-string">"yes"</span>:<span class="hljs-string">"no"</span>);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"no"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;
+   &#125;
+&#125;</code></pre>
+<h3 id="题解-v4"><a class="header-anchor" href="#题解-v4">¶</a>题解</h3>
+<p>容易发现有解当且仅当存在一个 $i$ 满足 $a_i=k$ 并且存在至少一个子区间满足该子区间的中位数 $\geq$</p>
+<p>判定是否有子区间的中位数$\geq k$ 可以直接做$b_i=-1^{[a_i&lt; k]}$的前缀和然后扫一遍即可。</p>
+<p>时间复杂度$O(nT)$</p>
+<h3 id="code-v4"><a class="header-anchor" href="#code-v4">¶</a>code</h3>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-keyword">int</span> lim)</span> </span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) b[i]=(a[i]&gt;=lim)?<span class="hljs-number">1</span>:<span class="hljs-number">-1</span>,b[i]+=b[i<span class="hljs-number">-1</span>];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> mi=<span class="hljs-number">0</span>,i=<span class="hljs-number">2</span>;i&lt;=n;++i) &#123;
+        mi=<span class="hljs-built_in">min</span>(mi,b[i<span class="hljs-number">-2</span>]);
+        <span class="hljs-keyword">if</span>(b[i]&gt;mi) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+&#125;
+ 
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;
+    IN(n),IN(k);
+    <span class="hljs-keyword">bool</span> flag=<span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) IN(a[i]);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) <span class="hljs-keyword">if</span>(a[i]==k) flag=<span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">bool</span> now=check(k);
+    <span class="hljs-keyword">if</span>(flag&amp;&amp;(now||n==<span class="hljs-number">1</span>)) <span class="hljs-built_in">puts</span>(<span class="hljs-string">"yes"</span>);
+    <span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">"no"</span>);
+&#125;
+ 
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">int</span> T;IN(T);
+    <span class="hljs-keyword">while</span>(T--) solve();
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+<h2 id="2E-1C"><a class="header-anchor" href="#2E-1C">¶</a>2E | 1C</h2>
+<p><img src="/img/Screenshot_20200529_215451.png" srcset="/img/loading.gif" alt="Screenshot_20200529_215451"></p>
+<h3 id="题意-v5"><a class="header-anchor" href="#题意-v5">¶</a>题意</h3>
+<p>给定一个$n \times m$的01矩阵，定义以下运算，如果一个单元格周围没有一个与该单元格状态相同的单元格，那么这个单元格的状态不会改变<br>
+「即，如果联通块的size为1，那么不变」<br>
+否则，改变其颜色</p>
+<h3 id="题解-v5"><a class="header-anchor" href="#题解-v5">¶</a>题解</h3>
+<p>首先我们想象一种情况</p>
 <blockquote>
-<p>QQ: 3467262357<br>
-telegram: @tirpitz52727</p>
+<p>1 0 0 0 1<br>
+0 0 0 0 0<br>
+0 0 0 0 0<br>
+0 0 0 0 0<br>
+1 0 0 0 1</p>
 </blockquote>
-<p>end.</p>
+<p>第一次运算时，根据运算规则，处于坐标(1 , 1)…的点是不变的</p>
+<p>第二次运算时，根据运算规则，全体的状态都发生了改变</p>
+<p>也就是说，如果满足初始状态存在一个不为零的联通块，那么一定可以在有限次数内，使整个图变成一个大联通块</p>
+<p>那么我们此时就记录每个点在哪个时刻，在哪个联通块内即可</p>
+<h3 id="code-v5"><a class="header-anchor" href="#code-v5">¶</a>code</h3>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> adj(f,i,j,c) f(i+1,j,c) || f(i-1,j,c) || f(i,j+1,c) || f(i,j-1,c)</span>
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> p; <span class="hljs-keyword">char</span> s[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>];
+<span class="hljs-keyword">int</span> t, n, x, y, m, d[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>];
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&gt; q;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">g</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> c)</span> </span>
+<span class="hljs-function"></span>&#123; 
+    <span class="hljs-keyword">return</span> i&gt;=<span class="hljs-number">0</span> &amp;&amp; i&lt;n &amp;&amp; j&gt;=<span class="hljs-number">0</span> &amp;&amp; j&lt;m &amp;&amp; s[i][j] == c; &#125;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> c)</span> </span>&#123;
+	<span class="hljs-keyword">if</span> (i&gt;=<span class="hljs-number">0</span> &amp;&amp; i&lt;n &amp;&amp; j&gt;=<span class="hljs-number">0</span> &amp;&amp; j&lt;m &amp;&amp; !d[i][j])
+		d[i][j]=c+<span class="hljs-number">1</span>, q.emplace(i, j);
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;t);
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>, s+i);
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++) <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;m; j++)
+		<span class="hljs-keyword">if</span> (adj(g, i, j, s[i][j])) q.emplace(i, j), d[i][j]=<span class="hljs-number">1</span>;
+	<span class="hljs-keyword">for</span>(; q.<span class="hljs-built_in">size</span>(); q.pop()) <span class="hljs-keyword">int</span> i=q.front().first, j=q.front().second,
+		k=adj(f, i, j, d[i][j]);
+	<span class="hljs-keyword">while</span>(t--) 
+    &#123;
+		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%lld"</span>, &amp;x, &amp;y, &amp;p); x--, y--;
+		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c\n"</span>, s[x][y]^(p&gt;=d[x][y] &amp;&amp; d[x][y] &amp;&amp; ((p-d[x][y])&amp;<span class="hljs-number">1</span>) == <span class="hljs-number">0</span>));
+	&#125;
+&#125;</code></pre>
+<h2 id="2F-1D"><a class="header-anchor" href="#2F-1D">¶</a>2F | 1D</h2>
+<p><img src="/img/Screenshot_20200529_230019.png" srcset="/img/loading.gif" alt="Screenshot_20200529_230019"></p>
+<h3 id="题意-v6"><a class="header-anchor" href="#题意-v6">¶</a>题意</h3>
+<p>给定一个数字n，构造序列$p$<br>
+序列必须满足以下规则<br>
+$\forall k \in p , \exists i , j , 1 \leq i &lt; j \leq n , p_i  = k - 1 , p_j = k$</p>
+<p>然后统计所有合法的序列内，每个数字的出现次数</p>
+<h3 id="题解-v6"><a class="header-anchor" href="#题解-v6">¶</a>题解</h3>
+<p>个人认为是Lagrange inversion以及生成函数</p>
+<p>tiz是大fw，不会</p>
+<h3 id="code-v6"><a class="header-anchor" href="#code-v6">¶</a>code</h3>
 ]]></content>
       <categories>
-        <category>碎碎念</category>
+        <category>tiz的挨打之旅</category>
       </categories>
       <tags>
-        <tag>随笔</tag>
+        <tag>cf</tag>
       </tags>
   </entry>
   <entry>
@@ -67,8 +337,8 @@ telegram: @tirpitz52727</p>
 <p>「数学的发展就是不断的扩宽条件，从简单到一般化的过程」</p>
 <h2 id="群"><a class="header-anchor" href="#群">¶</a>群</h2>
 <p>代数结构$(R, \times)$，二元运算根据封闭性、单位元、逆元、结合律、交换律，可以归纳成不同的群。本节介绍的group-like，从最不严格到严格(依次添加限制条件)，其关系图如下：<br>
-<img src="/assets/Screenshot_20200528_113446.png" srcset="/img/loading.gif" alt="Screenshot_20200528_113446"><br>
-<img src="/assets/Screenshot_20200528_113510.png" srcset="/img/loading.gif" alt="Screenshot_20200528_113510"></p>
+<img src="/img/Screenshot_20200528_113446.png" srcset="/img/loading.gif" alt="Screenshot_20200528_113446"><br>
+<img src="/img/Screenshot_20200528_113510.png" srcset="/img/loading.gif" alt="Screenshot_20200528_113510"></p>
 <h3 id="原群"><a class="header-anchor" href="#原群">¶</a>原群</h3>
 <p>原群(magma)是一种基本的代数结构，只要满足两元素作二元运算得到新元素仍属于该集合，即封闭性</p>
 <h3 id="半群"><a class="header-anchor" href="#半群">¶</a>半群</h3>
@@ -99,9 +369,9 @@ $Hg = h \times g , h \in H,称其为H在G内的关于g的右陪集$</p>
 <p>以便与理解我们这里举一个例子<br>
 假设有实数加群$&lt;R , +&gt;$的子群整数加群$&lt;Z , +&gt;$，现在我们要在$R$中找一个数，假设这个数是2.5,那么，对于$Z$中的每一个元素$+2.5$所形成的新的集合，就叫做2.5确定的$&lt;R，+&gt;$中的整数左陪集<br>
 如图<br>
-<img src="/assets/Screenshot_20200528_114619.png" srcset="/img/loading.gif" alt="Screenshot_20200528_114619"><br>
+<img src="/img/Screenshot_20200528_114619.png" srcset="/img/loading.gif" alt="Screenshot_20200528_114619"><br>
 这是陪集出现的初始条件</p>
-<p><img src="/assets/Screenshot_20200528_114746.png" srcset="/img/loading.gif" alt="Screenshot_20200528_114746"><br>
+<p><img src="/img/Screenshot_20200528_114746.png" srcset="/img/loading.gif" alt="Screenshot_20200528_114746"><br>
 这是左陪集</p>
 <h3 id="性质"><a class="header-anchor" href="#性质">¶</a>性质</h3>
 <p>陪集的一些性质：<br>
@@ -145,19 +415,19 @@ $|H|\times [G : H] = |G|$</p>
 <img src="/assets/Screenshot_20200528_121505.png" srcset="/img/loading.gif" alt="Screenshot_20200528_121505"><br>
 意为将$a_i$映射为$a_p$，其中$p_1 , p_2 , p_3 , … , p_n$是1,…，n的一个排列</p>
 <h3 id="置换的乘法"><a class="header-anchor" href="#置换的乘法">¶</a>置换的乘法</h3>
-<p>对于两个置换<img src="/assets/Screenshot_20200528_121505.png" srcset="/img/loading.gif" alt="Screenshot_20200528_121505">和<img src="/assets/Screenshot_20200528_121754.png" srcset="/img/loading.gif" alt="Screenshot_20200528_121754">$f和g$的乘积记作$f \circ g$，其值为<br>
-<img src="/assets/Screenshot_20200528_122023.png" srcset="/img/loading.gif" alt="Screenshot_20200528_122023"></p>
+<p>对于两个置换<img src="/img/Screenshot_20200528_121505.png" srcset="/img/loading.gif" alt="Screenshot_20200528_121505">和<img src="/img/Screenshot_20200528_121754.png" srcset="/img/loading.gif" alt="Screenshot_20200528_121754">$f和g$的乘积记作$f \circ g$，其值为<br>
+<img src="/img/Screenshot_20200528_122023.png" srcset="/img/loading.gif" alt="Screenshot_20200528_122023"></p>
 <h3 id="置换群"><a class="header-anchor" href="#置换群">¶</a>置换群</h3>
 <p>置换的乘法显然符合封闭性，结合律，单位元，逆元<br>
 ，因此构成了一个群，这个群的任意一个子群，被称为置换群</p>
 <h3 id="循环置换"><a class="header-anchor" href="#循环置换">¶</a>循环置换</h3>
 <p>循环置换是一种特殊的置换，可表示为<br>
-<img src="/assets/Screenshot_20200528_141929.png" srcset="/img/loading.gif" alt="Screenshot_20200528_141929"><br>
+<img src="/img/Screenshot_20200528_141929.png" srcset="/img/loading.gif" alt="Screenshot_20200528_141929"><br>
 若两个循环置换不含有相同的元素，则称他们是<code>不相交</code>的<br>
 有以下定理<br>
 任意一个置换都可以分解为若干不相交的循环置换的乘积<br>
 例如<br>
-<img src="/assets/Screenshot_20200528_142144.png" srcset="/img/loading.gif" alt="Screenshot_20200528_142144"></p>
+<img src="/img/Screenshot_20200528_142144.png" srcset="/img/loading.gif" alt="Screenshot_20200528_142144"></p>
 <blockquote>
 <p>proof<br>
 将元素看作是图的节点，映射关系看作有向边，则每个节点的入度和出度都为1,因此形成的图形必定是若干个环的集合，而一个环即可用一个循环置换表示</p>
@@ -196,14 +466,14 @@ $|X / G| = \frac{1}{|G|}\sum_{g\in G} |X^g|$<br>
 $X^{g} = { x | x\in X , g(x) = x}$</p>
 <blockquote>
 <p>proof<br>
-<img src="/assets/Screenshot_20200528_151745.png" srcset="/img/loading.gif" alt="Screenshot_20200528_151745"><br>
+<img src="/img/Screenshot_20200528_151745.png" srcset="/img/loading.gif" alt="Screenshot_20200528_151745"><br>
 所以有<br>
-<img src="/assets/Screenshot_20200528_151814.png" srcset="/img/loading.gif" alt="Screenshot_20200528_151814"></p>
+<img src="/img/Screenshot_20200528_151814.png" srcset="/img/loading.gif" alt="Screenshot_20200528_151814"></p>
 </blockquote>
 <p>以及，举例<br>
 用 3 种颜色给一个立方体染色，求本质不同的方案数（经过翻转后相同的两种方案视为同一种）<br>
-<img src="/assets/Screenshot_20200528_151954.png" srcset="/img/loading.gif" alt="Screenshot_20200528_151954"></p>
-<p><img src="/assets/Screenshot_20200528_152045.png" srcset="/img/loading.gif" alt="Screenshot_20200528_152045"></p>
+<img src="/img/Screenshot_20200528_151954.png" srcset="/img/loading.gif" alt="Screenshot_20200528_151954"></p>
+<p><img src="/img/Screenshot_20200528_152045.png" srcset="/img/loading.gif" alt="Screenshot_20200528_152045"></p>
 <h2 id="Polya"><a class="header-anchor" href="#Polya">¶</a>Polya</h2>
 <p>修改Burnside内容为<br>
 $|X / G| = \frac{1}{|G|}\sum_{g\in G} |X^{c(g)}|$<br>
@@ -247,7 +517,7 @@ $|X / G| = \frac{1}{|G|}\sum_{g\in G} |X^{c(g)}|$<br>
 <p>之前笔记只有我自己才能看懂（x</p>
 <p>要放出来还是修正一下比较好w</p>
 <h2 id="Tree’rotation"><a class="header-anchor" href="#Tree’rotation">¶</a>Tree’rotation</h2>
-<p><img src="/assets/Screenshot_20200527_192201.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192201"><br>
+<p><img src="/img/Screenshot_20200527_192201.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192201"><br>
 分为left rotation和right rotation</p>
 <p>right rotation如上图所示</p>
 <p>如果我们此时是这样的需求：</p>
@@ -319,26 +589,26 @@ $|X / G| = \frac{1}{|G|}\sum_{g\in G} |X^{c(g)}|$<br>
     update(spl[now].l) , update(now);
 &#125;</code></pre>
 <h2 id="Splaying"><a class="header-anchor" href="#Splaying">¶</a>Splaying</h2>
-<p><img src="/assets/Screenshot_20200527_192428.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192428"><br>
+<p><img src="/img/Screenshot_20200527_192428.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192428"><br>
 如果存在一条这样的链</p>
 <p>如何把-&gt;root node</p>
 <p>简单过程就是通过不断的right roration移动变成root node</p>
 <h3 id="双旋"><a class="header-anchor" href="#双旋">¶</a>双旋</h3>
 <h3 id="同构调整"><a class="header-anchor" href="#同构调整">¶</a>同构调整</h3>
-<p><img src="/assets/Screenshot_20200527_192528_usttzrtjb.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192528"><br>
+<p><img src="/img/Screenshot_20200527_192528_usttzrtjb.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192528"><br>
 转化结果<br>
-<img src="/assets/Screenshot_20200527_192640.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192640"><br>
+<img src="/img/Screenshot_20200527_192640.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192640"><br>
 同理，如果是right subtree单链也是这样</p>
 <h3 id="异构调整"><a class="header-anchor" href="#异构调整">¶</a>异构调整</h3>
-<p><img src="/assets/Screenshot_20200527_192739.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192739"><br>
+<p><img src="/img/Screenshot_20200527_192739.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192739"><br>
 显然需要先对P left roration后对G进行right roration</p>
 <p>另外的对称情况也是这样</p>
 <p>接下来是一个实例<br>
-<img src="/assets/Screenshot_20200527_192909.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192909"><br>
-<a href="/assets/Screenshot_20200527_192956.png">Screenshot_20200527_192956</a><br>
-<img src="/assets/Screenshot_20200527_193046.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193046"><br>
-<img src="/assets/Screenshot_20200527_193131.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193131"><br>
-<img src="/assets/Screenshot_20200527_193211.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193211"></p>
+<img src="/img/Screenshot_20200527_192909.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192909"><br>
+<img src="/img/Screenshot_20200527_192956.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192956"><br>
+<img src="/img/Screenshot_20200527_193046.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193046"><br>
+<img src="/img/Screenshot_20200527_193131.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193131"><br>
+<img src="/img/Screenshot_20200527_193211.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193211"></p>
 <h3 id="splaying-code"><a class="header-anchor" href="#splaying-code">¶</a>splaying - code</h3>
 <p>单独考虑当前步骤的状态，判断当前节点为单旋还是双旋</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">splaying</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> &amp;y)</span><span class="hljs-comment">//start x , and end y</span></span>
@@ -496,10 +766,31 @@ $|X / G| = \frac{1}{|G|}\sum_{g\in G} |X^{c(g)}|$<br>
 </blockquote>
 ]]></content>
       <categories>
-        <category>数据结构</category>
+        <category>树据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
+        <tag>树据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大概算是第一篇</title>
+    <url>/2020/05/16/%E5%A4%A7%E6%A6%82%E7%AE%97%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
+    <content><![CDATA[<p>其实大概也不知道放些什么东西，就随便当个仓库玩了（</p>
+<p>或许会放些学习笔记，以及偶尔的碎碎念（？</p>
+<p>或许还会放些随便写的无聊的东西</p>
+<p>大概就是这样</p>
+<p>顺带放一下我的联系方式，当然大概可以看到这个网站的人都知道hhhhh</p>
+<blockquote>
+<p>QQ: 3467262357<br>
+telegram: @tirpitz52727</p>
+</blockquote>
+<p>end.</p>
+]]></content>
+      <categories>
+        <category>碎碎念</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
 </search>

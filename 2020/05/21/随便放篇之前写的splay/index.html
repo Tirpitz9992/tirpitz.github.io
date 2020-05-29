@@ -221,7 +221,7 @@
 <p>之前笔记只有我自己才能看懂（x</p>
 <p>要放出来还是修正一下比较好w</p>
 <h2 id="Tree’rotation"><a class="header-anchor" href="#Tree’rotation">¶</a>Tree’rotation</h2>
-<p><img src="/assets/Screenshot_20200527_192201.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192201"><br>
+<p><img src="/img/Screenshot_20200527_192201.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192201"><br>
 分为left rotation和right rotation</p>
 <p>right rotation如上图所示</p>
 <p>如果我们此时是这样的需求：</p>
@@ -293,26 +293,26 @@
     update(spl[now].l) , update(now);
 &#125;</code></pre>
 <h2 id="Splaying"><a class="header-anchor" href="#Splaying">¶</a>Splaying</h2>
-<p><img src="/assets/Screenshot_20200527_192428.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192428"><br>
+<p><img src="/img/Screenshot_20200527_192428.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192428"><br>
 如果存在一条这样的链</p>
 <p>如何把-&gt;root node</p>
 <p>简单过程就是通过不断的right roration移动变成root node</p>
 <h3 id="双旋"><a class="header-anchor" href="#双旋">¶</a>双旋</h3>
 <h3 id="同构调整"><a class="header-anchor" href="#同构调整">¶</a>同构调整</h3>
-<p><img src="/assets/Screenshot_20200527_192528_usttzrtjb.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192528"><br>
+<p><img src="/img/Screenshot_20200527_192528_usttzrtjb.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192528"><br>
 转化结果<br>
-<img src="/assets/Screenshot_20200527_192640.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192640"><br>
+<img src="/img/Screenshot_20200527_192640.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192640"><br>
 同理，如果是right subtree单链也是这样</p>
 <h3 id="异构调整"><a class="header-anchor" href="#异构调整">¶</a>异构调整</h3>
-<p><img src="/assets/Screenshot_20200527_192739.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192739"><br>
+<p><img src="/img/Screenshot_20200527_192739.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192739"><br>
 显然需要先对P left roration后对G进行right roration</p>
 <p>另外的对称情况也是这样</p>
 <p>接下来是一个实例<br>
-<img src="/assets/Screenshot_20200527_192909.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192909"><br>
-<a href="/assets/Screenshot_20200527_192956.png">Screenshot_20200527_192956</a><br>
-<img src="/assets/Screenshot_20200527_193046.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193046"><br>
-<img src="/assets/Screenshot_20200527_193131.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193131"><br>
-<img src="/assets/Screenshot_20200527_193211.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193211"></p>
+<img src="/img/Screenshot_20200527_192909.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192909"><br>
+<img src="/img/Screenshot_20200527_192956.png" srcset="/img/loading.gif" alt="Screenshot_20200527_192956"><br>
+<img src="/img/Screenshot_20200527_193046.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193046"><br>
+<img src="/img/Screenshot_20200527_193131.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193131"><br>
+<img src="/img/Screenshot_20200527_193211.png" srcset="/img/loading.gif" alt="Screenshot_20200527_193211"></p>
 <h3 id="splaying-code"><a class="header-anchor" href="#splaying-code">¶</a>splaying - code</h3>
 <p>单独考虑当前步骤的状态，判断当前节点为单旋还是双旋</p>
 <pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">splaying</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> &amp;y)</span><span class="hljs-comment">//start x , and end y</span></span>
@@ -477,7 +477,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                      <a class="hover-with-bg" href="/categories/%E6%A0%91%E6%8D%AE%E7%BB%93%E6%9E%84/">树据结构</a>
                     
                   </div>
                 
@@ -485,7 +485,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91%E6%8D%AE%E7%BB%93%E6%9E%84/">树据结构</a>
                     
                   </div>
                 
