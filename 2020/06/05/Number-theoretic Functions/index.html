@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/tiz-tiz.jpg">
+  <link rel="icon" type="image/png" href="/img/tiz-tiz.jpg#%20%E7%BD%91%E7%AB%99%E6%A0%87%E7%AD%BE%E9%A1%B5%E7%9A%84%20icon">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tirpitz">
+  <meta name="keywords" content="">
+  <title>Number-theoretic Functions- qwq-tiz&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Tirpitz'blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/new.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-06-05 20:30">
+                    2020年6月5日 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.5k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    29
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1>Number-theoretic function</h1>
+<!-- TOC -->
+<ul>
+<li><a href="#number-theoretic-function">Number-theoretic function</a>
+<ul>
+<li><a href="#%E6%94%BE%E5%9C%A8%E5%89%8D%E9%9D%A2%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5">放在前面的碎碎念</a></li>
+<li><a href="#pot_p-n">$pot_p n$</a>
+<ul>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#x">[x]</a>
+<ul>
+<li><a href="#definition-1">Definition</a></li>
+<li><a href="#natures">Natures</a></li>
+</ul>
+</li>
+<li><a href="#theorem-1">Theorem 1</a></li>
+<li><a href="#theorem-2">Theorem 2</a></li>
+</ul>
+</li>
+<li><a href="#mobius-function">Mobius function</a>
+<ul>
+<li><a href="#definition-2">Definition</a></li>
+<li><a href="#theorem-1-1">Theorem 1</a></li>
+<li><a href="#theorem-2-1">Theorem 2</a></li>
+</ul>
+</li>
+<li><a href="#eulers-totient-function">Euler’s totient function</a>
+<ul>
+<li><a href="#theorem-1-2">Theorem 1</a></li>
+<li><a href="#theorem--2">Theorem  2</a></li>
+<li><a href="#theorem-3">Theorem 3</a></li>
+</ul>
+</li>
+<li><a href="#dirichlet-convolution-of-number-theoretic-functions">Dirichlet convolution of number-theoretic functions</a>
+<ul>
+<li><a href="#definition-3">Definition</a></li>
+<li><a href="#theorem-1-3">Theorem 1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="放在前面的碎碎念"><a class="header-anchor" href="#放在前面的碎碎念">¶</a>放在前面的碎碎念</h2>
+<p>并不知道还能活多久，现在的每一分钟都是煎熬</p>
+<p>强撑着糊了些水的东西，让自己稍微的冷静了一点点</p>
+<p>好希望明天就可以发生意外死亡</p>
+<h2 id="pot-p-n"><a class="header-anchor" href="#pot-p-n">¶</a>$pot_p n$</h2>
+<h3 id="Definition"><a class="header-anchor" href="#Definition">¶</a>Definition</h3>
+<p>For a given prime number p , set $p^m | n$ , that is $p^m | n , p^{m + 1} \not| n$ , then record $pot_p n = m$</p>
+<p>For rational numbers $\frac{m}{n}$ , we define</p>
+<p>$pot_p (\frac{m}{n}) = pot_p m - pot_p n$</p>
+<p>For a given prime number p , $pot_p m$is a number-theoretic function.</p>
+<p>By definition , obviously has the following simple properties.</p>
+<p>1.$pot_p(m )n = pot_p m + pot_p m$</p>
+<p>2.for $k &gt; 0$ , we have $pot_p n^k = k\times pot_p n$</p>
+<p>therefor , we have $pot_3 54 = pot_3 3^3 + pot_3 2 = 3 , pot_254 = pot_2 3^3 + pot_2 2 = 1$and manyt more.</p>
+<p>Tiz will ask for the formula in this section . To this end tiz will first introduce an important function.</p>
+<h3 id="x"><a class="header-anchor" href="#x">¶</a>[x]</h3>
+<h4 id="Definition-v2"><a class="header-anchor" href="#Definition-v2">¶</a>Definition</h4>
+<p>The function [x] is a defined function all real numbers , and the value of the function [x] is the largest integer less than or equal to x</p>
+<h4 id="Natures"><a class="header-anchor" href="#Natures">¶</a>Natures</h4>
+<p>1.$[x] \leq x &lt; [x] + 1$</p>
+<p>2.$[x] + [y] \leq [x + y]$</p>
+<p>3.when n is integer , $[x + n] = n + [x]$</p>
+<p>4.when $x$ isn’t integer , $[-x] = -[x] - 1$ , when $x$ is integer , $[-x] = -[x]$</p>
+<p>5.if a and b are any two positive integers , then the number of postive integers that are not greater than a and are multiples of b is $[\frac{a}{b}]$</p>
+<p>This is very easy.</p>
+<p>Then , we have</p>
+<h3 id="Theorem-1"><a class="header-anchor" href="#Theorem-1">¶</a>Theorem 1</h3>
+<p>Let $p^k \leq n &lt; p^{k+1}$ , then we have</p>
+<p>$pot_p(n!) = \sum_{i = 1}<sup>{k}[\frac{n}{p</sup>i}]$</p>
+<p>Proof.</p>
+<p>$pot_p(n!) = \sum_{i = 1} ^ {n} pot_p i$</p>
+<p>$pot_p(n!) = \sum_{i = 1}^{[\frac{n}{p}]}pot_p(i \times p)$</p>
+<p>and</p>
+<p>$pot_p(j\times p) = pot_p§ + pot_p(j)$</p>
+<p>we have</p>
+<p>$pot_p(n !) = [\frac{n}{p}] + pot_p([\frac{n}{p}] !)$</p>
+<p>From nature 5 , we can see $[\frac{[\frac{n}{p}]}{p}] = [\frac{n}{p^2}]$,so</p>
+<p>$pot_p([\frac{n}{p}] !) = [\frac{n}{p^2}] + pot_p([\frac{n}{p^2}] !)$</p>
+<p>$pot_p(\frac{n}{p^{k-1} !}) = [\frac{n}{p^k}] + pot_p([\frac{n}{p^k}] !) = [\frac{n}{p^k}]$</p>
+<p>Substitue get theorem.</p>
+<p>Prood end.</p>
+<p>The result of theorem 1 can also be written as $pot_p(n!) = \sum_{t = 1} ^ {\infty} [\frac{n}{p^t}]$. It gives</p>
+<p>$n! = \prod_{p &lt; n} p^{\sum_{t = 1}<sup>{\infty}[\frac{n}{p</sup>t}]}$</p>
+<h3 id="Theorem-2"><a class="header-anchor" href="#Theorem-2">¶</a>Theorem 2</h3>
+<p>$r \in (0 , n)$ , then<br>
+$(n , r) = \frac{n!}{r!(n - r)!}$ is a integer.</p>
+<p>proof</p>
+<p>because $n = (n - r) + r$ , we can draw from neture 2 of [x]</p>
+<blockquote>
+<p>2.$[x] + [y] \leq [x + y]$</p>
+</blockquote>
+<p>$[\frac{n}{p^t}] \geq [\frac{n - r}{p ^t}] + [\frac{r}{p^t}]$</p>
+<p>$\sum_{t = 1}<sup>{\infty}[\frac{n}{p</sup>t}] \geq \sum_{t = 1}^{\infty} \frac{n - r}{p^t} + \sum_{t = 1} ^{\infty} [\frac{r}{p^t}]$</p>
+<p>Using the above formula , it is proved that $(n , r)$ is an integer.</p>
+<p>proof end.</p>
+<h2 id="Mobius-function"><a class="header-anchor" href="#Mobius-function">¶</a>Mobius function</h2>
+<h3 id="Definition-v3"><a class="header-anchor" href="#Definition-v3">¶</a>Definition</h3>
+<p><img src="/assets/Screenshot_20200602_220717.png" srcset="/img/loading.gif" alt="Screenshot_20200602_220717"></p>
+<h3 id="Theorem-1-v2"><a class="header-anchor" href="#Theorem-1-v2">¶</a>Theorem 1</h3>
+<p>if $n \geq 1$ , then we have</p>
+<p>$\sum_{d | n}\mu(n) = [\frac{1}{n}]$</p>
+<p>Proof</p>
+<p>when $n = 1$ , the result is clearly established.</p>
+<p>now , let $n &gt; 1$ , n’s Standard decomposition is $n = \prod p_i ^{e_i}$ , then</p>
+<p>$\sum_{d | n} \mu (d) = \mu(1) + \mu(p_1) + … + \mu p_s + \mu (p_1 p_2) + … +\mu (p_{s - 1} p_{s}) + p(p_1…p_{s})$<br>
+$= 1 + \binom{s}{1} (-1) + \binom{s}{2} (-1)^2 + … + \binom{s}{s} (-1)^s$</p>
+<p>$= (1 - 1)^s = 0$</p>
+<p>$\mu(x)$ function often appear in number theory</p>
+<p>for exmple</p>
+<p>$\varphi(n) = n(1 - \frac{1}{p_1})…(1 - \frac{1}{p_s})$</p>
+<p>n’s Standard decomposition is $n = \prod p_i ^{e_i}$ , using $\mu (x)$ , it can be rewritten as</p>
+<p>$\varphi(n) = \sum_{d | n} \mu(d) \frac{n}{d}$.</p>
+<h3 id="Theorem-2-v2"><a class="header-anchor" href="#Theorem-2-v2">¶</a>Theorem 2</h3>
+<p>let n &gt; 1 , when d passes n and does not contain more than m prime factors , then</p>
+<p>if m is even , $\sum \mu(d) \geq 0$</p>
+<p>if m is odd , $\sum \mu(d) \leq 0$</p>
+<p>n’s Standard decomposition is $n = \prod p_i^{e_i}$</p>
+<p>then , when m = s , we can kown form Theorem 1 , this is established</p>
+<p>when , we set $m &lt; s$ , because if d has square factor , $\mu (d) = 0$ , it is only necessary to discuss the case where d does not contain a square factor , and the number of factors d containing j prime factors is $\binom{s}{j}$ , and these d , $\mu (d) = (-1)^j$ , then</p>
+<p>but</p>
+<p>$0 = (1 - 1)^s = \binom{s}{0} - \binom{s}{1} + … + (-1)^m\binom{s}{m} + (-1)^{m+1}\binom{s}{m+1} + … + (-1)^s$</p>
+<p>so</p>
+<p>$\sum_{j = 0}^{s} (-1)^j = (-1) ^{m} \binom{s}{m+1} + (-1)^{m+1}\binom{s}{m+2} + … + (-1)^{s+1}$<br>
+$= (-1)^{m}(\binom{s}{m+1} - (\binom{s}{m+2}) + … + (-1) ^{s - m + 1})$</p>
+<p>let m is even , when m = s - 1 ,  this obviously has $\sum_{j=0}^{s - 1} \binom{s}{j}(-1)^j = 1 $</p>
+<p>$m \leq s - 2$ , and when $2 \leq t \leq m \leq \frac{s}{2}$ , then due to $\binom{s}{t} &gt; \binom{s}{t-1}$ , get</p>
+<p>$\sum_{j = 0}^{m} \binom{s}{j} (-1)^j = \binom{s}{0} + \binom{s}{2} - \binom{s}{1} + … + \binom{s}{m} - \binom{s}{m-1} \geq 0$</p>
+<p>when $s - 2 \geq t \geq m &gt; \frac{s}{2}$,from $\binom{s}{t+1} &gt; \binom{s}{t+2}$, we can know</p>
+<p>$\binom{s}{m+1} - \binom{s}{m+2} + … + (-1)^{s - m + 1} \geq 0$</p>
+<p>when m is obb , similarly provable.</p>
+<p>proof end.</p>
+<h2 id="Euler’s-totient-function"><a class="header-anchor" href="#Euler’s-totient-function">¶</a>Euler’s totient function</h2>
+<p>In number theory, Euler’s totient function counts the positive integers up to a given integer n that are relatively prime to n. It is written using the Greek letter phi as φ(n) or ϕ(n), and may also be called Euler’s phi function.</p>
+<p>Euler’s totient function is a multiplicative function, meaning that if two numbers m and n are relatively prime, then φ(mn) = φ(m)φ(n).This function gives the order of the multiplicative group of integers modulo n (the group of units of the ring ℤ/nℤ). It is also used for defining the RSA encryption system.</p>
+<h3 id="Theorem-1-v3"><a class="header-anchor" href="#Theorem-1-v3">¶</a>Theorem 1</h3>
+<p>let $n \geq 0$ , then we have</p>
+<p>$\sum_{d | n} \varphi (d) = n$</p>
+<p>proof</p>
+<p>Consider the set of rational numbers</p>
+<p>$S = { \frac{r}{n} , r = 1 , 2 , 3 , … , n }$</p>
+<p>Divide each number in S into an instantaneous score to get $S^{<em>}$ , no two fractions in $S^{</em>} have the same value$</p>
+<p>from the $r \leq n$ , $\frac{r}{n} = \frac{h}{k}$ is reduced score , then</p>
+<p>$(h , k) = 1 , h\leq k , k | n$</p>
+<p>Conversely , for a given n , any score that satisfies the three confitions $\frac{h}{k}$ is in $S^{*}$ , this is because , from $k | n$ , we can set $n = k \times g , r = h\times g$ , so $\frac{h}{k} = \frac{hg}{kg} = \frac{r}{n} , r\leq n$ .</p>
+<p>the total number of scores $\frac{h}{k}$satisfying the three conditions is $\sum_{d | n} \varphi(d)$ , and there are n scores in $S^{*}$ , so</p>
+<p>$\sum_{d | n} \varphi(d) = n$</p>
+<p>end.</p>
+<h3 id="Theorem-2-v3"><a class="header-anchor" href="#Theorem-2-v3">¶</a>Theorem  2</h3>
+<p>set $(m , n) = d$ , then we have</p>
+<p>$\varphi(mn) = \varphi(m)\varphi(n) \frac{d}{\varphi(d)}$</p>
+<p>proof</p>
+<p>$\frac{\varphi(mn)}{mn} = \prod_{p|mn}(1 - \frac{1}{p}) = \frac{\prod_{p|m} (1 - \frac{1}{p}) \prod_{p|n} (1 - \frac{1}{p}) }{ \prod_{p |(m , n)} (1 - \frac{1}{p})}$</p>
+<p>$= \frac{\frac{\varphi(m)}{m} \frac{\varphi(n)}{n} } {\frac{\varphi(d)}{d}}$</p>
+<p>so , we can find $\varphi(m n) = \varphi(m) \varphi(n) \frac{d}{\varphi(d)}$</p>
+<h3 id="Theorem-3"><a class="header-anchor" href="#Theorem-3">¶</a>Theorem 3</h3>
+<p>if $a | b$ , then we have $\varphi(a) | \varphi(b)$</p>
+<p>proof</p>
+<p>let $b = ac$</p>
+<p>$\varphi(b) = \varphi(a c) = \varphi(a) \varphi© \frac{d}{\varphi(d)} = d\varphi(a) \frac{\varphi©}{\varphi(d)}$</p>
+<p>among them $(a , c) = d$</p>
+<p>due to $d | c$ , so $\frac{d\varphi©}{\varphi(d)} = \frac{c \prod_{p | c} (1 - \frac{1}{p})}{ \prod (1 - \frac{1}{p})}$ is integer , so $\varphi(a) = \varphi(b)$</p>
+<h2 id="Dirichlet-convolution-of-number-theoretic-functions"><a class="header-anchor" href="#Dirichlet-convolution-of-number-theoretic-functions">¶</a>Dirichlet convolution of number-theoretic functions</h2>
+<p>we know</p>
+<p>$\varphi(n) = \sum_{d | n} \mu(d) \frac{n}{d}$</p>
+<p>this is a dirichlet convolution</p>
+<h3 id="Definition-v4"><a class="header-anchor" href="#Definition-v4">¶</a>Definition</h3>
+<p>set $f(n) , g(n)$ are two number-theoretic functions , its dirichlet convolution $h(n)$ is a number-theoretic too.</p>
+<p>$h(n) = \sum_{d | n} f(d) g(\frac{n}{d})$</p>
+<h3 id="Theorem-1-v4"><a class="header-anchor" href="#Theorem-1-v4">¶</a>Theorem 1</h3>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E8%AE%BA/">数论</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/29/cf-641/">
+                        <span class="hidden-mobile">cf 641</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Number-theoretic Functions&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
