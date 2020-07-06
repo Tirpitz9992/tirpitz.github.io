@@ -154,7 +154,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    2.1k 字
+                    2.3k 字
                   </span>
                 
 
@@ -164,7 +164,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    25
+                    30
                      分钟
                   </span>
                 
@@ -377,7 +377,77 @@ $X^{g} = { x | x\in X , g(x) = x}$</p>
 <p>修改Burnside内容为<br>
 $|X / G| = \frac{1}{|G|}\sum_{g\in G} |X^{c(g)}|$<br>
 其中$c(g)$表示置换g能拆分成的不相交的循环置换的数量</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> lim 31680</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> Mod = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;
+<span class="hljs-keyword">int</span> N, T;
+<span class="hljs-keyword">int</span> prime[<span class="hljs-number">3500</span>], tot;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans;
+<span class="hljs-keyword">bool</span> vis[lim];
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Rd</span><span class="hljs-params">()</span> </span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>; <span class="hljs-keyword">char</span> ch = getchar();
+	<span class="hljs-keyword">while</span>(ch &lt; <span class="hljs-string">'0'</span> || ch &gt; <span class="hljs-string">'9'</span>) ch = getchar();
+	<span class="hljs-keyword">while</span>(ch &gt;= <span class="hljs-string">'0'</span> &amp;&amp; ch &lt;= <span class="hljs-string">'9'</span>) x = x * <span class="hljs-number">10</span> + (ch ^ <span class="hljs-number">48</span>), ch = getchar();
+	<span class="hljs-keyword">return</span> x;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Euler_Sieve</span><span class="hljs-params">()</span> </span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; lim; ++i) 
+    &#123;
+		<span class="hljs-keyword">if</span>(!vis[i]) prime[++tot] = i;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt; lim; ++j) 
+        &#123;
+			vis[i * prime[j]] = <span class="hljs-literal">true</span>;
+			<span class="hljs-keyword">if</span>(i % prime[j] == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;
+		&#125;
+	&#125;
+	<span class="hljs-keyword">return</span>;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">fsp</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b, <span class="hljs-keyword">int</span> Mi)</span> </span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> res = <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">while</span>(Mi) 
+    &#123;
+		<span class="hljs-keyword">if</span>(Mi &amp; <span class="hljs-number">1</span>) (res *= b) %= Mod;
+		(b *= b) %= Mod, Mi &gt;&gt;= <span class="hljs-number">1</span>;
+	&#125;
+	<span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">phi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">int</span> res = <span class="hljs-number">1</span>, div;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; prime[i] * prime[i] &lt;= x; ++i) 
+    &#123;
+		<span class="hljs-keyword">if</span>(x % prime[i]) <span class="hljs-keyword">continue</span>;
+		div = prime[i], x /= div, res *= div - <span class="hljs-number">1</span>;
+		<span class="hljs-keyword">while</span>(x % div == <span class="hljs-number">0</span>)
+			x /= div, res *= prime[i];
+	&#125;
+	<span class="hljs-keyword">if</span>(x != <span class="hljs-number">1</span>) res *= x - <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">return</span> res;
+&#125;
 
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>
+<span class="hljs-function"></span>&#123;
+	Euler_Sieve();
+	T = Rd();
+	<span class="hljs-keyword">while</span>(T--) 
+    &#123;
+		N = Rd(), ans = <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">int</span> ed = <span class="hljs-built_in">sqrt</span>(N);
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= ed; ++i) 
+        &#123;
+			<span class="hljs-keyword">if</span>(N % i) <span class="hljs-keyword">continue</span>;
+				(ans += phi(N / i) * fsp(N, i - <span class="hljs-number">1</span>)) %= Mod;
+			<span class="hljs-keyword">if</span>(i * i != N)
+				(ans += phi(i) * fsp(N, N / i - <span class="hljs-number">1</span>)) %= Mod;
+		&#125;
+		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans);
+	&#125;
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
             </article>
             <hr>
             <div>
